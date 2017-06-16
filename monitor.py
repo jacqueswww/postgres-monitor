@@ -41,7 +41,7 @@ def main():
             'metric_namespace': 'postgres',
             'database_name': settings['database'],
             'refresh_time': REFRESH_TIME,
-            'tps': tps
+            'tps': round(tps, 2)
         }
         print(json.dumps(out))
         prev_val = new_val
