@@ -6,15 +6,16 @@ import psycopg2
 import time
 
 
+REFRESH_TIME = int(os.environ.get('REFRESH_TIME', 60))
+
 settings = {
     'database': os.environ.get('DATABASE_NAME'),
     'user': os.environ.get('DATABASE_USER'),
     'password': os.environ.get('DATABASE_PASSWORD'),
     'host': os.environ.get('POSTGRESQL_SERVICE_HOST'),
-    'port': os.environ.get('POSTGRESQL_SERVICE_PORT'),
+    'port': int(os.environ.get('POSTGRESQL_SERVICE_PORT', 5432)),
 }
 
-REFRESH_TIME = os.environ.get('REFRESH_TIME', 60)
 
 conn1 = psycopg2.connect(**settings)
 cur = conn1.cursor()
@@ -43,6 +44,7 @@ def main():
             'tps': tps
         }
         print(json.dumps(out))
+        prev_val = new_val
 
 
 if __name__ == "__main__":
