@@ -23,6 +23,7 @@ WORKDIR /root
 
 # copy monitor script
 COPY monitor.py /root/monitor.py
+RUN chmod +x /root/monitor.py
 
 # Define default command.
 CMD ["/root/monitor.py"]
