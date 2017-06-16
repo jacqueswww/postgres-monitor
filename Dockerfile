@@ -16,15 +16,15 @@ RUN \
 
 
 # Set environment variables.
-ENV HOME /root
+ENV HOME /opt
 
 # Define working directory.
-WORKDIR /root
+WORKDIR /opt
 
 # copy monitor script
-COPY monitor.py /root/monitor.py
-RUN chmod +x /root/monitor.py
+COPY monitor.py /opt/monitor.py
+RUN chmod +x /opt/monitor.py
 
 # Define default command.
-CMD ["/root/monitor.py"]
+CMD ["/opt/monitor.py"]
 
